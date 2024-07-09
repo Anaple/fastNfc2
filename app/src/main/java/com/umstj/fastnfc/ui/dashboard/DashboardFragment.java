@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class DashboardFragment extends Fragment implements NfcAdapter.ReaderCall
     private EditText editText;
     private NfcAdapter nfcAdapter;
     private String ed;
+    private Button button;
     private static final String TAG = "WriteNfcTagFragment";
 
     @Override
@@ -58,6 +60,7 @@ public class DashboardFragment extends Fragment implements NfcAdapter.ReaderCall
         editText = binding.editText;
         keyboardView = binding.keyboardView;
         keyboard = new Keyboard(getContext(), R.xml.custom_keybd);
+        button = binding.submitButton;
 
         keyboardView.setKeyboard(keyboard);
         keyboardView.setOnKeyboardActionListener(new KeyboardView.OnKeyboardActionListener() {
@@ -77,8 +80,26 @@ public class DashboardFragment extends Fragment implements NfcAdapter.ReaderCall
                     }
                 } else {
                     editable.insert(start, Character.toString((char) primaryCode));
+
                 }
                 ed = editText.getText().toString();
+                if(ed.length() >0){
+                    if (ed.equals("000"))
+                    {
+                        ed = "0";
+                    }
+                    int number = Integer.parseInt(ed);
+                    if (number > 255){
+                        ed = "254";
+                    }
+
+                }else {
+                    ed = "0";
+                }
+                button.setText(getText(R.string.btn_write)+":" + ed);
+
+
+
             }
 
             @Override
@@ -95,6 +116,14 @@ public class DashboardFragment extends Fragment implements NfcAdapter.ReaderCall
 
             @Override
             public void swipeUp() {}
+        });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle button click here
+                ed = editText.getText().toString();
+                button.setText(getText(R.string.btn_write)+":" + ed);
+            }
         });
 
         editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -157,12 +186,12 @@ public class DashboardFragment extends Fragment implements NfcAdapter.ReaderCall
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        ed = editText.getText().toString();
+        button.setText(getText(R.string.btn_write)+":" + ed);
         nfcAdapter = NfcAdapter.getDefaultAdapter(getActivity());
         if (nfcAdapter == null) {
             Toast.makeText(getActivity(), "NFC is not available on this device.", Toast.LENGTH_SHORT).show();
             getActivity().finish();
-            return;
         }
     }
 
@@ -190,6 +219,9 @@ public class DashboardFragment extends Fragment implements NfcAdapter.ReaderCall
             } else {
                 writeNdefTag(tag, ed);
             }
+
+            Toast.makeText(getActivity(), "NFC Write Success", Toast.LENGTH_SHORT).show();
+
         }
     }
 

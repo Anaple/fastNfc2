@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.FastNFC" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@android:color/system_accent1_200</item>
+        <item name="colorPrimaryVariant">@android:color/system_accent1_400</item>
+        <item name="colorOnPrimary">@android:color/system_neutral1_900</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@android:color/system_accent2_200</item>
+        <item name="colorSecondaryVariant">@android:color/system_accent2_400</item>
+        <item name="colorOnSecondary">@android:color/system_neutral1_900</item>
+        <!-- Background color. -->
+        <item name="android:colorBackground">@android:color/system_neutral2_900</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <!-- Customize your theme here. -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <!-- Bottom navigation bar color -->
+        <item name="android:navigationBarColor">@android:color/system_neutral1_900</item>
+
+    </style>
+</resources>

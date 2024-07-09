@@ -1,10 +1,10 @@
 <!-- res/xml/custom_keyboard.xml -->
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
-    android:keyWidth="60dp"
+    android:keyWidth="100dp"
     android:horizontalGap="2%p"
     android:verticalGap="0dp"
 
-    android:keyHeight="60dp">
+    android:keyHeight="100dp">
 
     <!-- Row 1 -->
     <Row android:rowEdgeFlags="top">

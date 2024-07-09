@@ -19,25 +19,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
 />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/submitButton"  android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/linear"
+        android:text="@string/_0"  app:layout_constraintTop_toBottomOf="@+id/editText"  app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+          style="@style/Widget.Material3.Button.OutlinedButton"  />
 
-    <android.inputmethodservice.KeyboardView
-        android:id="@+id/keyboard_view"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:keyBackground="@drawable/keyboard_key_background"
-        android:keyPreviewHeight="60dp"
-        android:keyPreviewLayout="@layout/keyboard_key_preview"
-        android:keyTextSize="22sp"
-        android:keyTextColor="?attr/colorOnSecondary"
-        android:background="?attr/colorOnPrimary"
         android:gravity="center"
-
-        android:layout_marginStart="70dp"
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.5"/>
+        android:id="@+id/linear"
+        app:layout_constraintHeight_percent="0.65">
+
+        <android.inputmethodservice.KeyboardView
+            android:id="@+id/keyboard_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:keyBackground="@drawable/keyboard_key_background"
+
+            android:keyPreviewLayout="@layout/keyboard_key_preview"
+            android:keyTextSize="30sp"
+            android:gravity="center"
+            android:keyTextColor="?attr/colorOnBackground"
+            android:background="@android:color/transparent"
+            android:layout_marginBottom="30dp"
+            android:layout_marginEnd="10dp"
+            />
+
+    </LinearLayout>
 
 
 
